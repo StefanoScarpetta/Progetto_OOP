@@ -1,0 +1,17 @@
+3 5 2
+l1 mario rossi 24 worker
+l2 luca bianchi 26 manager
+l3 andrea verdi 32 manager
+worker -> m1,m2
+manager -> m3,m4
+executive -> m5
+m1 A 10,15 pezzo m2,m3
+m2 B 9,10 pezzo m1,m4
+m3 C 15,23 utensile m1,m2,m5
+m4 D 4,6 pezzo m3,m5
+m5 A 10,12 utensile m2,m3
+p1 micro 4 m1->m2
+p2 macro 2 m4->m5->m1
+l1 -> m1,m2
+l2 -> m3,m4
+l3 -> m1,m3,m5
