@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Competenza {
     private String ruolo;
-    private List<String> macchinari;
+    private String[] macchinari;
 
-    public Competenza(String ruolo, List<String> macchinari) {
+    public Competenza(String ruolo, String[] macchinari) {
         this.macchinari = macchinari;
         this.ruolo = ruolo;
     }
@@ -19,11 +19,11 @@ public class Competenza {
         this.ruolo = ruolo;
     }
 
-    public List<String> getMacchinari() {
+    public String[] getMacchinari() {
         return macchinari;
     }
 
-    public void setMacchinari(List<String> macchinari) {
+    public void setMacchinari(String[] macchinari) {
         this.macchinari = macchinari;
     }
 

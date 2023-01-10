@@ -8,9 +8,9 @@ public class Lavoratore {
     private String cognome;
     private Integer eta;
     private String ruolo;
-    private List<String> macchinari;
+    private String[] macchinari;
 
-    public Lavoratore(String id, String nome, String cognome, Integer eta, String ruolo, List<String> macchinari) {
+    public Lavoratore(String id, String nome, String cognome, Integer eta, String ruolo, String[] macchinari) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
@@ -59,11 +59,11 @@ public class Lavoratore {
         this.ruolo = ruolo;
     }
 
-    public List<String> getMacchinari() {
+    public String[] getMacchinari() {
         return macchinari;
     }
 
-    public void setMacchinari(List<String> macchinari) {
+    public void setMacchinari(String[] macchinari) {
         this.macchinari = macchinari;
     }
 

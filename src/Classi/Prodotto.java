@@ -6,9 +6,9 @@ public class Prodotto {
     private String id;
     private String categoria;
     private Integer tempo;
-    private List<String> sequenza;
+    private String[] sequenza;
 
-    public Prodotto(String id, String categoria, Integer tempo, List<String> sequenza) {
+    public Prodotto(String id, String categoria, Integer tempo, String[] sequenza) {
         this.id = id;
         this.categoria = categoria;
         this.tempo = tempo;
@@ -39,11 +39,11 @@ public class Prodotto {
         this.tempo = tempo;
     }
 
-    public List<String> getSequenza() {
+    public String[] getSequenza() {
         return sequenza;
     }
 
-    public void setSequenza(List<String> sequenza) {
+    public void setSequenza(String[] sequenza) {
         this.sequenza = sequenza;
     }
 

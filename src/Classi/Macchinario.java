@@ -5,11 +5,11 @@ import java.util.List;
 public class Macchinario {
     private String id;
     private String zona;
-    private List<Integer> orario;
+    private String[] orario;
     private String tipologia;
-    private List<String> conflitto;
+    private String[] conflitto;
 
-    public Macchinario(String id, String zona, List<Integer> orario, String tipologia, List<String> conflitto) {
+    public Macchinario(String id, String zona, String[] orario, String tipologia, String[] conflitto) {
         this.id = id;
         this.zona = zona;
         this.orario = orario;
@@ -33,11 +33,11 @@ public class Macchinario {
         this.zona = zona;
     }
 
-    public List<Integer> getOrario() {
+    public String[] getOrario() {
         return orario;
     }
 
-    public void setOrario(List<Integer> orario) {
+    public void setOrario(String[] orario) {
         this.orario = orario;
     }
 
@@ -49,11 +49,11 @@ public class Macchinario {
         this.tipologia = tipologia;
     }
 
-    public List<String> getConflitto() {
+    public String[] getConflitto() {
         return conflitto;
     }
 
-    public void setConflitto(List<String> conflitto) {
+    public void setConflitto(String[] conflitto) {
         this.conflitto = conflitto;
     }
 
