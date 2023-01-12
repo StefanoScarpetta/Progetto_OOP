@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84fa45c3-48b1-4b6f-8cea-71cacafe61de" name="Changes" comment="">
+    <list default="true" id="84fa45c3-48b1-4b6f-8cea-71cacafe61de" name="Changes" comment="Immagazzinamento dati tramite file e accessibilità, divisione in classi">
+      <change afterPath="$PROJECT_DIR$/progetto/Progetto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classi/Competenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classi/Competenza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classi/Gestione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classi/Gestione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classi/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classi/Lavoratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classi/Macchinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classi/Macchinario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classi/Prodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classi/Prodotto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StandardInput/Standard Input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/StandardInput/StandardInput.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Progetto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Progetto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classi/Competenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/progetto/Classi/Competenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classi/Gestione.java" beforeDir="false" afterPath="$PROJECT_DIR$/progetto/Classi/Gestione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classi/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/progetto/Classi/Lavoratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classi/Macchinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/progetto/Classi/Macchinario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classi/Prodotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/progetto/Classi/Prodotto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StandardInput/StandardInput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/progetto/StandardInput/StandardInput.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,20 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/stefa/Desktop/API-nazioni",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/stefa/Desktop/API-nazioni&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,8 +66,18 @@
       <workItem from="1673286664130" duration="57000" />
       <workItem from="1673299150706" duration="102000" />
       <workItem from="1673299843008" duration="4577000" />
-      <workItem from="1673342810158" duration="15943000" />
+      <workItem from="1673342810158" duration="20511000" />
+      <workItem from="1673427537258" duration="18550000" />
+      <workItem from="1673512317423" duration="19426000" />
     </task>
+    <task id="LOCAL-00001" summary="Immagazzinamento dati tramite file e accessibilità, divisione in classi">
+      <created>1673386824793</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673386824793</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,5 +93,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Immagazzinamento dati tramite file e accessibilità, divisione in classi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Immagazzinamento dati tramite file e accessibilità, divisione in classi" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

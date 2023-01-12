@@ -54,25 +54,31 @@ public class Gestione {
             ));
         }
 
-        String[] controlloTask = file.get(L+3+M+P+L+1).split(" ");
-        if (Objects.equals(controlloTask[0], "TASK1")) {
-            task = new ArrayList<String>();
-            task.add(controlloTask[0]);
-        } else if (Objects.equals(controlloTask[0], "TASK2")) {
-            task = new ArrayList<String>();
-            task.add(controlloTask[0]);
-            task.add(controlloTask[1]);
-            task.add(controlloTask[2]);
-            task.add(controlloTask[3]);
-        } else if (Objects.equals(controlloTask[0], "TASK3")) {
-            task = new ArrayList<String>();
-            task.add(controlloTask[0]);
-            task.add(controlloTask[1]);
-            for (int i=2; i<2+Integer.parseInt(controlloTask[1]); i++) {
-                task.add(file.get(i+L+3+M+P+L));
+        if (file.size() >= 1+L+3+M+P+L+1) {
+            String[] controlloTask = file.get(L+3+M+P+L+1).split(" ");
+            if (Objects.equals(controlloTask[0], "TASK1")) {
+                task = new ArrayList<String>();
+                task.add(controlloTask[0]);
+            } else if (Objects.equals(controlloTask[0], "TASK2")) {
+                task = new ArrayList<String>();
+                task.add(controlloTask[0]);
+                task.add(controlloTask[1]);
+                task.add(controlloTask[2]);
+                task.add(controlloTask[3]);
+            } else if (Objects.equals(controlloTask[0], "TASK3")) {
+                task = new ArrayList<String>();
+                task.add(controlloTask[0]);
+                task.add(controlloTask[1]);
+                for (int i=2; i<2+Integer.parseInt(controlloTask[1]); i++) {
+                    task.add(file.get(i+L+3+M+P+L));
+                }
+            } else {
+                task = new ArrayList<String>();
+                task.add("not valid");
             }
         } else {
             task = new ArrayList<String>();
+            task.add("not valid");
         }
 
     }
