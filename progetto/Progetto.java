@@ -18,38 +18,12 @@ public class Progetto {
 
         if (Objects.equals(gestione.getTask().get(0), "TASK1") || Objects.equals(gestione.getTask().get(0), "TASK2") || Objects.equals(gestione.getTask().get(0), "TASK3")) {
 
-            int prodottiTotali = gestione.getProdotti().size();
+            int prodottiTotali = 0;
             int totaleMacchinariUtilizzati = 0;
             HashMap<String, Integer> macchinariUtilizzati = new HashMap<String, Integer>();
             HashMap<String, ArrayList<String>> macchinariImpiegati = new HashMap<String, ArrayList<String>>();
             boolean macchinarioImpiegatoProdotti = true;
-            for (int i = 0; i < gestione.getProdotti().size(); i++) {
-                for (int y = 0; y < gestione.getProdotti().get(i).getSequenza().length; y++) {
-                    totaleMacchinariUtilizzati++;
-                    if (!macchinariUtilizzati.containsKey(gestione.getProdotti().get(i).getSequenza()[y])) {
-                        macchinariUtilizzati.put(gestione.getProdotti().get(i).getSequenza()[y], 1);
-                    } else {
-                        Integer count = macchinariUtilizzati.get(gestione.getProdotti().get(i).getSequenza()[y]);
-                        macchinariUtilizzati.put(gestione.getProdotti().get(i).getSequenza()[y], count + 1);
-                    }
-                    if (!macchinariImpiegati.containsKey(gestione.getProdotti().get(i).getSequenza()[y])) {
-                        ArrayList<String> categoria = new ArrayList<String>();
-                        categoria.add(gestione.getProdotti().get(i).getCategoria());
-                        macchinariImpiegati.put(gestione.getProdotti().get(i).getSequenza()[y], categoria);
-                    } else {
-                        ArrayList<String> categorie = new ArrayList<String>();
-                        for (int z = 0; z < macchinariImpiegati.get(gestione.getProdotti().get(i).getSequenza()[y]).size(); z++) {
-                            categorie.add(macchinariImpiegati.get(gestione.getProdotti().get(i).getSequenza()[y]).get(z));
-                        }
-                        categorie.add(gestione.getProdotti().get(i).getCategoria());
-                        macchinariImpiegati.put(gestione.getProdotti().get(i).getSequenza()[y], categorie);
-                        if (categorie.size() > 2) {
-                            macchinarioImpiegatoProdotti = false;
-                        }
-                    }
-                }
-            }
-            String macchinarioPiuUtilizzato = Collections.max(macchinariUtilizzati.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+            String macchinarioPiuUtilizzato = "";
             int prodottiTotaliMicro = 0;
             int prodottiTotaliMacro = 0;
             int prodottiTotaliAggregato = 0;
@@ -58,54 +32,88 @@ public class Progetto {
             int macchinariAggregato = 0;
             String prodottoCatenaLunga = "";
             int lunghezzaCatena = 0;
-            for (int i = 0; i < gestione.getProdotti().size(); i++) {
-                if (Objects.equals(gestione.getProdotti().get(i).getCategoria(), "micro")) {
-                    prodottiTotaliMicro++;
-                    macchinariMicro += gestione.getProdotti().get(i).getSequenza().length;
-                    if (gestione.getProdotti().get(i).getSequenza().length > lunghezzaCatena) {
-                        lunghezzaCatena = gestione.getProdotti().get(i).getSequenza().length;
-                        prodottoCatenaLunga = gestione.getProdotti().get(i).getCategoria();
+            if (!gestione.getProdotti().isEmpty()) {
+                prodottiTotali = gestione.getProdotti().size();
+                for (int i = 0; i < gestione.getProdotti().size(); i++) {
+                    for (int y = 0; y < gestione.getProdotti().get(i).getSequenza().length; y++) {
+                        totaleMacchinariUtilizzati++;
+                        if (!macchinariUtilizzati.containsKey(gestione.getProdotti().get(i).getSequenza()[y])) {
+                            macchinariUtilizzati.put(gestione.getProdotti().get(i).getSequenza()[y], 1);
+                        } else {
+                            Integer count = macchinariUtilizzati.get(gestione.getProdotti().get(i).getSequenza()[y]);
+                            macchinariUtilizzati.put(gestione.getProdotti().get(i).getSequenza()[y], count + 1);
+                        }
+                        if (!macchinariImpiegati.containsKey(gestione.getProdotti().get(i).getSequenza()[y])) {
+                            ArrayList<String> categoria = new ArrayList<String>();
+                            categoria.add(gestione.getProdotti().get(i).getCategoria());
+                            macchinariImpiegati.put(gestione.getProdotti().get(i).getSequenza()[y], categoria);
+                        } else {
+                            ArrayList<String> categorie = new ArrayList<String>();
+                            for (int z = 0; z < macchinariImpiegati.get(gestione.getProdotti().get(i).getSequenza()[y]).size(); z++) {
+                                categorie.add(macchinariImpiegati.get(gestione.getProdotti().get(i).getSequenza()[y]).get(z));
+                            }
+                            categorie.add(gestione.getProdotti().get(i).getCategoria());
+                            macchinariImpiegati.put(gestione.getProdotti().get(i).getSequenza()[y], categorie);
+                            if (categorie.size() > 2) {
+                                macchinarioImpiegatoProdotti = false;
+                            }
+                        }
                     }
-                } else if (Objects.equals(gestione.getProdotti().get(i).getCategoria(), "macro")) {
-                    prodottiTotaliMacro++;
-                    macchinariMacro += gestione.getProdotti().get(i).getSequenza().length;
-                    if (gestione.getProdotti().get(i).getSequenza().length >= lunghezzaCatena && !Objects.equals(prodottoCatenaLunga, "aggregato")) {
-                        lunghezzaCatena = gestione.getProdotti().get(i).getSequenza().length;
-                        prodottoCatenaLunga = gestione.getProdotti().get(i).getCategoria();
-                    }
-                } else if (Objects.equals(gestione.getProdotti().get(i).getCategoria(), "aggregato")) {
-                    prodottiTotaliAggregato++;
-                    macchinariAggregato += gestione.getProdotti().get(i).getSequenza().length;
-                    if (gestione.getProdotti().get(i).getSequenza().length >= lunghezzaCatena) {
-                        lunghezzaCatena = gestione.getProdotti().get(i).getSequenza().length;
-                        prodottoCatenaLunga = gestione.getProdotti().get(i).getCategoria();
+                }
+                macchinarioPiuUtilizzato = Collections.max(macchinariUtilizzati.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+                for (int i = 0; i < gestione.getProdotti().size(); i++) {
+                    if (Objects.equals(gestione.getProdotti().get(i).getCategoria(), "micro")) {
+                        prodottiTotaliMicro++;
+                        macchinariMicro += gestione.getProdotti().get(i).getSequenza().length;
+                        if (gestione.getProdotti().get(i).getSequenza().length > lunghezzaCatena) {
+                            lunghezzaCatena = gestione.getProdotti().get(i).getSequenza().length;
+                            prodottoCatenaLunga = gestione.getProdotti().get(i).getCategoria();
+                        }
+                    } else if (Objects.equals(gestione.getProdotti().get(i).getCategoria(), "macro")) {
+                        prodottiTotaliMacro++;
+                        macchinariMacro += gestione.getProdotti().get(i).getSequenza().length;
+                        if (gestione.getProdotti().get(i).getSequenza().length >= lunghezzaCatena && !Objects.equals(prodottoCatenaLunga, "aggregato")) {
+                            lunghezzaCatena = gestione.getProdotti().get(i).getSequenza().length;
+                            prodottoCatenaLunga = gestione.getProdotti().get(i).getCategoria();
+                        }
+                    } else if (Objects.equals(gestione.getProdotti().get(i).getCategoria(), "aggregato")) {
+                        prodottiTotaliAggregato++;
+                        macchinariAggregato += gestione.getProdotti().get(i).getSequenza().length;
+                        if (gestione.getProdotti().get(i).getSequenza().length >= lunghezzaCatena) {
+                            lunghezzaCatena = gestione.getProdotti().get(i).getSequenza().length;
+                            prodottoCatenaLunga = gestione.getProdotti().get(i).getCategoria();
+                        }
                     }
                 }
             }
+
             int lavoratoriNonCoerenti = 0;
-            for (int i = 0; i < gestione.getLavoratori().size(); i++) {
-                List<String> macchinariAssegnati = new ArrayList<>(List.of(gestione.getLavoratori().get(i).getMacchinari()));
-                Collections.sort(macchinariAssegnati);
-                if (Objects.equals(gestione.getLavoratori().get(i).getRuolo(), "worker")) {
-                    List<String> macchinariRuolo = new ArrayList<>(List.of(gestione.getCompetenze().get(0).getMacchinari()));
-                    Collections.sort(macchinariRuolo);
-                    if (!macchinariAssegnati.equals(macchinariRuolo)) {
-                        lavoratoriNonCoerenti++;
-                    }
-                } else if (Objects.equals(gestione.getLavoratori().get(i).getRuolo(), "manager")) {
-                    List<String> macchinariRuolo = new ArrayList<>(List.of(gestione.getCompetenze().get(1).getMacchinari()));
-                    Collections.sort(macchinariRuolo);
-                    if (!macchinariAssegnati.equals(macchinariRuolo)) {
-                        lavoratoriNonCoerenti++;
-                    }
-                } else if (Objects.equals(gestione.getLavoratori().get(i).getRuolo(), "executive")) {
-                    List<String> macchinariRuolo = new ArrayList<>(List.of(gestione.getCompetenze().get(2).getMacchinari()));
-                    Collections.sort(macchinariRuolo);
-                    if (!macchinariAssegnati.equals(macchinariRuolo)) {
-                        lavoratoriNonCoerenti++;
+            if (!gestione.getLavoratori().isEmpty()) {
+                for (int i = 0; i < gestione.getLavoratori().size(); i++) {
+                    List<String> macchinariAssegnati = new ArrayList<>(List.of(gestione.getLavoratori().get(i).getMacchinari()));
+                    Collections.sort(macchinariAssegnati);
+                    if (Objects.equals(gestione.getLavoratori().get(i).getRuolo(), "worker")) {
+                        List<String> macchinariRuolo = new ArrayList<>(List.of(gestione.getCompetenze().get(0).getMacchinari()));
+                        Collections.sort(macchinariRuolo);
+                        if (!macchinariAssegnati.equals(macchinariRuolo)) {
+                            lavoratoriNonCoerenti++;
+                        }
+                    } else if (Objects.equals(gestione.getLavoratori().get(i).getRuolo(), "manager")) {
+                        List<String> macchinariRuolo = new ArrayList<>(List.of(gestione.getCompetenze().get(1).getMacchinari()));
+                        Collections.sort(macchinariRuolo);
+                        if (!macchinariAssegnati.equals(macchinariRuolo)) {
+                            lavoratoriNonCoerenti++;
+                        }
+                    } else if (Objects.equals(gestione.getLavoratori().get(i).getRuolo(), "executive")) {
+                        List<String> macchinariRuolo = new ArrayList<>(List.of(gestione.getCompetenze().get(2).getMacchinari()));
+                        Collections.sort(macchinariRuolo);
+                        if (!macchinariAssegnati.equals(macchinariRuolo)) {
+                            lavoratoriNonCoerenti++;
+                        }
                     }
                 }
             }
+
             int macchinariA = 0;
             int macchinariB = 0;
             int macchinariC = 0;
@@ -114,47 +122,51 @@ public class Progetto {
             int macchinariConflitti = 0;
             int slotTemporale = 0;
             boolean macchinariConflittiReciproci = true;
+            boolean macchinariConflittiTotali = false;
+            boolean macchinariSlotTemporali = false;
             HashMap<String, String> unConflitto = new HashMap<String, String>();
-            for (int i = 0; i < gestione.getMacchinari().size(); i++) {
-                if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "A")) {
-                    macchinariA++;
-                } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "B")) {
-                    macchinariB++;
-                } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "C")) {
-                    macchinariC++;
-                } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "D")) {
-                    macchinariD++;
-                } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "E")) {
-                    macchinariE++;
-                }
-                if (Objects.equals(gestione.getTask().get(0), "TASK2")) {
-                    if (gestione.getMacchinari().get(i).getConflitto().length > Integer.parseInt(gestione.getTask().get(2))) {
-                        macchinariConflitti++;
+            if (!gestione.getMacchinari().isEmpty()) {
+                for (int i = 0; i < gestione.getMacchinari().size(); i++) {
+                    if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "A")) {
+                        macchinariA++;
+                    } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "B")) {
+                        macchinariB++;
+                    } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "C")) {
+                        macchinariC++;
+                    } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "D")) {
+                        macchinariD++;
+                    } else if (Objects.equals(gestione.getMacchinari().get(i).getZona(), "E")) {
+                        macchinariE++;
                     }
-                    if ((Integer.parseInt(gestione.getMacchinari().get(i).getOrario()[1]) - Integer.parseInt(gestione.getMacchinari().get(i).getOrario()[0])) > Integer.parseInt(gestione.getTask().get(3))) {
-                        slotTemporale++;
-                    }
-                    for (int y = 0; y < gestione.getMacchinari().get(i).getConflitto().length; y++) {
-                        if (!unConflitto.containsKey(gestione.getMacchinari().get(i).getConflitto()[y])) {
-                            unConflitto.put(gestione.getMacchinari().get(i).getConflitto()[y], gestione.getMacchinari().get(i).getConflitto()[y]);
-                        } else {
-                            macchinariConflittiReciproci = false;
+                    if (Objects.equals(gestione.getTask().get(0), "TASK2")) {
+                        if (gestione.getMacchinari().get(i).getConflitto().length > Integer.parseInt(gestione.getTask().get(2))) {
+                            macchinariConflitti++;
+                        }
+                        if ((Integer.parseInt(gestione.getMacchinari().get(i).getOrario()[1]) - Integer.parseInt(gestione.getMacchinari().get(i).getOrario()[0])) > Integer.parseInt(gestione.getTask().get(3))) {
+                            slotTemporale++;
+                        }
+                        for (int y = 0; y < gestione.getMacchinari().get(i).getConflitto().length; y++) {
+                            if (!unConflitto.containsKey(gestione.getMacchinari().get(i).getConflitto()[y])) {
+                                unConflitto.put(gestione.getMacchinari().get(i).getConflitto()[y], gestione.getMacchinari().get(i).getConflitto()[y]);
+                            } else {
+                                macchinariConflittiReciproci = false;
+                            }
                         }
                     }
                 }
+                if (Objects.equals(gestione.getTask().get(0), "TASK2") && Integer.parseInt(gestione.getTask().get(1)) > macchinariConflitti) {
+                    macchinariConflittiTotali = true;
+                }
+                if (Objects.equals(gestione.getTask().get(0), "TASK2") && Integer.parseInt(gestione.getTask().get(1)) > slotTemporale) {
+                    macchinariSlotTemporali = true;
+                }
             }
-            boolean macchinariConflittiTotali = false;
-            boolean macchinariSlotTemporali = false;
-            if (Objects.equals(gestione.getTask().get(0), "TASK2") && Integer.parseInt(gestione.getTask().get(1)) > macchinariConflitti) {
-                macchinariConflittiTotali = true;
-            }
-            if (Objects.equals(gestione.getTask().get(0), "TASK2") && Integer.parseInt(gestione.getTask().get(1)) > slotTemporale) {
-                macchinariSlotTemporali = true;
-            }
+
             boolean slotTemporaliSovrapposti = true;
             boolean prodottoOgniCategoria = true;
             boolean maxMacchinariConflitto = true;
-            if (Objects.equals(gestione.getTask().get(0), "TASK3")) {
+            boolean eseguito = false;
+            if (Objects.equals(gestione.getTask().get(0), "TASK3") && !gestione.getProdotti().isEmpty() && !gestione.getMacchinari().isEmpty()) {
                 ArrayList<String> tipologiaProdotti = new ArrayList<String>();
                 for (int i = 2; i < Integer.parseInt(gestione.getTask().get(1)) + 2; i++) {
                     for (int y = 0; y < Integer.parseInt(gestione.getTask().get(1)); y++) {
@@ -199,6 +211,7 @@ public class Progetto {
                 if (tipologiaProdottiSingoli.size() != 3) {
                     prodottoOgniCategoria = false;
                 }
+                eseguito = true;
             }
 
             if (Objects.equals(gestione.getTask().get(0), "TASK1")) {
@@ -216,7 +229,7 @@ public class Progetto {
                     System.out.println("NO");
                 }
             } else if (Objects.equals(gestione.getTask().get(0), "TASK3")) {
-                if (slotTemporaliSovrapposti && prodottoOgniCategoria && maxMacchinariConflitto) {
+                if (slotTemporaliSovrapposti && prodottoOgniCategoria && maxMacchinariConflitto && eseguito) {
                     System.out.println("VALID");
                 } else {
                     System.out.println("NOT VALID");
